@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários</title>
+    <script>
+        function confirmDelete(username) {
+            var result = confirm("Tem certeza de que deseja excluir o usuário " + username + "?");
+            if (result) {
+                window.location.href = "/delete/" + username;
+            }
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Usuários</h1>
+    <table border="1">
+        <tr>
+            <th>Nome</th>
+            <th>Senha</th>
+            <th>Ações</th>
+        </tr>
+        {% for row in data %}
+            <tr>
+                <td>{{ row['nome'] }}</td>
+                <td>{{ row['senha'] }}</td>
+                <td>
+                    <a href="{{ url_for('edit', username=row['nome']) }}">Editar</a>
+                    <button onclick="confirmDelete('{{ row['nome'] }}')">Excluir</button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{{ url_for('add_user') }}">Adicionar Usuário</a>
+</body>
+</html>
+

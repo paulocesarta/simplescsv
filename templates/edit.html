@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuário</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Editar Usuário</h1>
+    <form method="post">
+        <label for="senha">Senha:</label>
+        <input type="text" id="senha" name="senha" value="{{ user_data.senha }}" required>
+        <br>
+        <input type="submit" value="Salvar">
+    </form>
+</body>
+</html>
+
